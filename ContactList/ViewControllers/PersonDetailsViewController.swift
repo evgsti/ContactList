@@ -21,7 +21,7 @@ final class PersonDetailsViewController: UIViewController {
         super.viewDidLoad()
         self.title = person.fullName
         
-        phoneLabel.text = person.phone
-        emailLabel.text = person.email
+        phoneLabel.text = "Phone: \(person.phone)"
+        emailLabel.text = "Email: \(person.email)"
     }
 }
