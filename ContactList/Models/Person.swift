@@ -76,7 +76,7 @@ class DataStore {
     func generateAllPersons() -> [Person] {
         var persons = [Person]()
         
-        for _ in 1...names.count {
+        for _ in 1...30 {
             let person = Person(
                 name: names.randomElement() ?? "",
                 surname: surnames.randomElement() ?? "",
