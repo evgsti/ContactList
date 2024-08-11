@@ -7,37 +7,34 @@
 
 import UIKit
 
-final class PersonsListViewController: UITableViewController {
-    // MARK: - Private Properties
-    private var personsList = DataStore().generateAllPersons()
-        
-    // MARK: - View Life Cycles
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
+final class FirstPersonsListViewController: UITableViewController {
+    
+    // MARK: - Public Properties
+    var firstPersonsListData: [Person] = []
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let indexPath = tableView.indexPathForSelectedRow
         let detailsVC = segue.destination as? PersonDetailsViewController
-        detailsVC?.person = personsList[indexPath!.row]
+        detailsVC?.person = firstPersonsListData[indexPath!.row]
     }
 }
 
 // MARK: - UITableViewDataSource
-extension PersonsListViewController {
+extension FirstPersonsListViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        personsList.count
+        firstPersonsListData.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "personCell", for: indexPath)
-        let person = personsList[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "firstPersonCell", for: indexPath)
+        let person = firstPersonsListData[indexPath.row]
         
         var content = cell.defaultContentConfiguration()
         content.text = person.fullName
         
         cell.contentConfiguration = content
+        
         return cell
     }
 }
